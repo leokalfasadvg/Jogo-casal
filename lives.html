@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transmissão Ao Vivo | Jogo de Casal</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/fundo-live.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .live-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .btn-live {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 10px;
+            text-decoration: none;
+        }
+        .btn-live:hover {
+            background-color: #d81b60;
+            transform: scale(1.05);
+        }
+        .countdown {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TRANSMISSÃO AO VIVO</h1>
+        
+        <div class="live-info">
+            <h2>Próxima Sessão Íntima</h2>
+            <p>Nosso conteúdo ao vivo é exclusivo para casais premium</p>
+            <div class="countdown" id="countdown">00:15:00</div>
+        </div>
+
+        <h3>Clique para acessar a live:</h3>
+        <a href="https://www.xvlivecams.com/sararamirezzxx/" class="btn-live" target="_blank">ACESSAR LIVE AGORA</a>
+        
+        <div style="margin-top: 30px;">
+            <a href="index.html" class="btn-live">VOLTAR AO INÍCIO</a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown timer
+        function startCountdown(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    display.textContent = "AO VIVO AGORA!";
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            const fifteenMinutes = 60 * 15;
+            const display = document.querySelector('#countdown');
+            startCountdown(fifteenMinutes, display);
+        };
+    </script>
+</body>
+</html>

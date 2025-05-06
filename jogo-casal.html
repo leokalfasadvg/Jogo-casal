@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Casal Íntimo</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('C:\Users\Leonardo Kalfas\Desktop\Jogo casal');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #e91e63;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .question, .challenge {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #d81b60;
+        }
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Jogo de Casal Íntimo</h1>
+        <div class="question">
+            <p id="questionText">Clique no botão para começar!</p>
+        </div>
+        <div class="challenge" id="challengeSection" style="display: none;">
+            <p id="challengeText"></p>
+            <button onclick="completeChallenge()">Concluir Desafio</button>
+            <button onclick="skipChallenge()">Recusar (Punição)</button>
+        </div>
+        <button onclick="nextQuestion()">Próxima Pergunta</button>
+        <div class="score">
+            <p>Pontuação: <span id="score">0</span> pontos</p>
+        </div>
+    </div>
+
+    <script>
+        let questions = [
+            "Qual foi o momento em que você se sentiu mais conectado(a) comigo durante o sexo?",
+            "O que você mais gosta no meu jeito de te tocar?",
+            "Se pudéssemos reviver uma noite especial nossa, qual seria?",
+            "O que você acha que eu mais gosto quando estamos juntos na cama?",             "Qual parte do meu corpo você mais gosta de tocar?",
+            "Se pudéssemos experimentar uma nova posição hoje, qual seria?",
+            "O que você nunca me pediu, mas sempre quis experimentar?",
+            "Qual é o seu fetiche secreto que você nunca revelou?",
+            "Se pudéssemos gravar um vídeo íntimo, o que você gostaria que ele mostrasse?"
+        ];
+
+        let challenges = [
+            "Beije seu parceiro(a) por 1 minuto.",
+            "Faça uma massagem nas costas do seu parceiro(a).",
+            "Experimente uma nova posição sugerida pelo parceiro(a)."
+        ];
+
+        let punishments = [
+            "Faça 10 flexões.",
+            "Dançar por 1 minuto.",
+            "Cante uma música romântica."
+        ];
+
+        let score = 0;
+        let currentChallenge = null;
+
+        function nextQuestion() {
+            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+            document.getElementById('questionText').textContent = randomQuestion;
+
+            // Mostra uma ação ou desafio após a pergunta
+            const randomChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+            document.getElementById('challengeText').textContent = randomChallenge;
+            document.getElementById('challengeSection').style.display = 'block';
+            currentChallenge = randomChallenge;
+        }
+
+        function completeChallenge() {
+            alert("Desafio concluído! +20 pontos.");
+            score += 20;
+            updateScore();
+            document.getElementById('challengeSection').style.display = 'none';
+        }
+
+        function skipChallenge() {
+            const randomPunishment = punishments[Math.floor(Math.random() * punishments.length)];
+            alert(`Você recusou o desafio. Punição: ${randomPunishment}`);
+            score -= 10;
+            updateScore();
+            document.getElementById('challengeSection').style.display = 'none';
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = score;
+        }
+    </script>
+</body>
+</html>

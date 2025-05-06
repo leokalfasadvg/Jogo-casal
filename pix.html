@@ -1,0 +1,12 @@
+function skipChallenge() {
+    const randomPunishment = punishments[Math.floor(Math.random() * punishments.length)];
+    if (randomPunishment === "Pagar R$ 2,00 via PIX") {
+        alert("Você recusou o desafio. Punição: Pagar R$ 2,00 via PIX.");
+        window.location.href = 'pix.html';
+    } else {
+        alert(`Você recusou o desafio. Punição: ${randomPunishment}`);
+    }
+    score -= 10;
+    updateScore();
+    document.getElementById('challengeSection').style.display = 'none';
+}
